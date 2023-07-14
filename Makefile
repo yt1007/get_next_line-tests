@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/14 13:18:32 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/14 13:20:53 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,9 @@ $(TEST_OBJECTS): %.o: %.c
 
 clean:
 	@$(RM) $(NAME)
+	@$(RM) lib$(NAME).a
 
 fclean: clean
-	@$(RM) $(ALL_OBJECTS)
+	@$(RM) $(GNL_OBJECTS) $(UTILS_OBJECTS) $(TEST_OBJECTS)
 
 re: fclean mandatory
