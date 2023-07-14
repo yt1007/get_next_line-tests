@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/14 12:47:04 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/14 13:07:08 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,10 @@ bprep: $(BONUS_OBJECTS)
 all: mandatory bonus
 
 $(GNL_OBJECTS): %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
+	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
 
 $(UTILS_OBJECTS): %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
-	@echo $(TEST_UNITS)
+	@$(CC) $(CFLAGS) -c -o $@ $^
 
 $(TEST_UNITS): %: %/test.o
 	@$(CC) $(CFLAGS) -I. -o $(NAME) \
@@ -64,7 +63,7 @@ $(TEST_UNITS): %: %/test.o
 		&& ./gnl && $(RM) gnl
 
 $(TEST_OBJECTS): %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -I. -c -o $@ $^
+	@$(CC) $(CFLAGS) $(INCLUDES) -I. -c -o $@ $^
 
 clean:
 	@$(RM) $(NAME)
