@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/14 13:07:08 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/14 13:18:32 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,18 @@ mandatory: mprep $(UTILS_OBJECTS) $(TEST_UNITS)
 
 mprep: $(MANDATORY_OBJECTS)
 	@$(AR) lib$(NAME).a $^
+	@echo "Running tests using MANDATORY files."
 
 bonus: bprep $(UTILS_OBJECTS) $(TEST_UNITS)
 
 bprep: $(BONUS_OBJECTS)
 	@$(AR) lib$(NAME).a $^
+	@echo "Running tests using BONUS files."
 
-all: mandatory bonus
+all:
+	@make mandatory
+	@make clean
+	@make bonus
 
 $(GNL_OBJECTS): %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
@@ -60,7 +65,7 @@ $(UTILS_OBJECTS): %.o: %.c
 $(TEST_UNITS): %: %/test.o
 	@$(CC) $(CFLAGS) -I. -o $(NAME) \
 		$< $(UTILS_OBJECTS) lib$(NAME).a \
-		&& ./gnl && $(RM) gnl
+		&& ./$(NAME) && $(RM) $(NAME)
 
 $(TEST_OBJECTS): %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -I. -c -o $@ $^
