@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 12:38:54 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 17:22:12 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/17 17:27:48 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ for f in ${BONUS}; do
 	fi;
 done;
 if [[ ${B} -eq 0 ]]; then
-	echo -n "(bonus files not found) ";
+	echo -n "(bonus missing, skipped) ";
 fi;
 
 ## Try to compile & run the mandatory files with buffer_size settings

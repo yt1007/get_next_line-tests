@@ -35,7 +35,7 @@ for f in ${BONUS}; do
 	fi;
 done;
 if [[ ${B} -eq 0 ]]; then
-	echo -n "(bonus files not found) ";
+	echo -n "(bonus missing, skipped) ";
 fi;
 
 ## Try to compile & run the mandatory files without/with buffer_size settings
