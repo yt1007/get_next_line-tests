@@ -6,11 +6,10 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:54:08 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/14 13:06:31 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/17 07:42:18 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "get_next_line.h"
 #include "get_next_line-tests.h"
 
