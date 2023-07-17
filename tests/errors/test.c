@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:54:08 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/17 07:42:18 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/17 11:39:50 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,11 @@ int	main(void)
 	int		errors;
 	int		fd;
 
-	err_putstr("Running error management tests... ");
 	errors = 0;
 	fd = 42;
 	if (run_fd_test(fd))
 		errors++;
 	if (errors)
-		err_putstr("test failed.\n");
-	else
-		err_putstr("All tests passed.\n");
+		return (1);
 	return (0);
 }
