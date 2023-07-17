@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 08:34:57 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/17 08:44:39 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
 GNL_OBJECTS = $(MANDATORY_OBJECTS) $(BONUS_OBJECTS)
 
 EXCL_TESTS = tests/large_buffer
+EXCL_SOURCES = $(addsuffix /test.c, $(EXCL_TESTS))
+EXCL_OBJECTS = $(EXCL_TESTS:.c=.o)
 TEST_UNITS = $(filter-out $(EXCL_TESTS), \
 			              $(shell find tests -type d -mindepth 1))
 TEST_SOURCES = $(addsuffix /test.c, $(TEST_UNITS))
@@ -86,6 +88,6 @@ clean:
 	@$(RM) lib$(NAME).a
 
 fclean: clean
-	@$(RM) $(GNL_OBJECTS) $(UTILS_OBJECTS) $(TEST_OBJECTS)
+	@$(RM) $(GNL_OBJECTS) $(UTILS_OBJECTS) $(TEST_OBJECTS) $(EXCL_OBJECTS)
 
 re: fclean mandatory
