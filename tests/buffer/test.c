@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:21:18 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/17 08:10:13 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/17 09:28:19 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	main(void)
 	int		ofd;
 	char	*gnl;
 
-	err_putstr("Running large buffer size tests... ");
+	err_putstr("Running test with BUFFER_SIZE = ");
+	err_putnbr(BUFFER_SIZE);
+	err_putstr("... ");
 	fd = open("tests/large_buffer/input.txt", O_RDONLY);
 	ofd = open("gnl.out", O_WRONLY | O_CREAT, 0644);
 	gnl = get_next_line(fd);
