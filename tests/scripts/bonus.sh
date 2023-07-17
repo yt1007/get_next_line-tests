@@ -1,0 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    bonus.sh                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/17 12:38:54 by yetay             #+#    #+#              #
+#    Updated: 2023/07/17 20:13:02 by yetay            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#!/bin/bash
+
+MANDO="get_next_line.c get_next_line_utils.c";
+BONUS=$(echo $MANDO | sed "s/\.c/_bonus&/");
+TESTS="${WD}/get_next_line-tests_utils.c ${WD}/tests/bonus/test.c";
+
+## Check for the mandatory and bonus files
+cd ${GNL_DIR};
+B=1;
+for f in ${BONUS}; do
+	if [[ ! -r $f ]]; then 
+		B=0;
+	fi;
+done;
+if [[ ${B} -eq 0 ]]; then
+	echo -n "(bonus missing, skipped) ";
+fi;
+
+## If bonus files exists, try to compile & run the bonus files with
+## buffer_size settings
+## Exit with 1 if either compilation failed.
+if [[ ${B} == 1 ]]; then
+	cc -Wall -Wextra -Werror -I. -I${WD} \
+		-o gnl ${BONUS} ${TESTS};
+	cd ${WD} && ${GNL_DIR}/gnl;
+	if [[ $? -ne 0 ]]; then
+		echo -n "${RD}(BONUS KO. Check diff.out files)${NC} ";
+		exit 1;
+	fi;
+	cd ${GNL_DIR};
+fi;
+
+exit 0;
