@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/14 13:20:53 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/17 08:34:57 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,22 +30,28 @@ BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
 
 GNL_OBJECTS = $(MANDATORY_OBJECTS) $(BONUS_OBJECTS)
 
-TEST_UNITS = $(shell find tests -type d -mindepth 1)
+EXCL_TESTS = tests/large_buffer
+TEST_UNITS = $(filter-out $(EXCL_TESTS), \
+			              $(shell find tests -type d -mindepth 1))
 TEST_SOURCES = $(addsuffix /test.c, $(TEST_UNITS))
 TEST_OBJECTS = $(TEST_SOURCES:.c=.o)
 
 UTILS_SOURCES = get_next_line-tests_utils.c
 UTILS_OBJECTS = $(UTILS_SOURCES:.c=.o)
 
-.PHONY: mandatory mprep bonus bprep $(TEST_UNITS) all clean fclean re
+BUFFER_SIZE = 
 
-mandatory: mprep $(UTILS_OBJECTS) $(TEST_UNITS)
+.PHONY: mandatory mprep bonus bprep $(TEST_UNITS) $(EXCL_TESTS) \
+	    all clean fclean re
+
+mandatory: mprep $(UTILS_OBJECTS) $(TEST_UNITS) $(EXCL_TESTS)
 
 mprep: $(MANDATORY_OBJECTS)
 	@$(AR) lib$(NAME).a $^
 	@echo "Running tests using MANDATORY files."
 
-bonus: bprep $(UTILS_OBJECTS) $(TEST_UNITS)
+bonus: bprep $(UTILS_OBJECTS) $(TEST_UNITS) $(EXCL_TESTS)
+
 
 bprep: $(BONUS_OBJECTS)
 	@$(AR) lib$(NAME).a $^
@@ -64,6 +70,11 @@ $(UTILS_OBJECTS): %.o: %.c
 
 $(TEST_UNITS): %: %/test.o
 	@$(CC) $(CFLAGS) -I. -o $(NAME) \
+		$< $(UTILS_OBJECTS) lib$(NAME).a \
+		&& ./$(NAME) && $(RM) $(NAME)
+
+tests/large_buffer: %: %/test.o
+	@$(CC) $(CFLAGS) -D 4201 -I. -o $(NAME) \
 		$< $(UTILS_OBJECTS) lib$(NAME).a \
 		&& ./$(NAME) && $(RM) $(NAME)
 
