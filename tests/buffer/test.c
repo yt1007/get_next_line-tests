@@ -6,11 +6,10 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:21:18 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/17 09:28:19 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/17 12:58:03 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "get_next_line.h"
 #include "get_next_line-tests.h"
 
@@ -45,10 +44,7 @@ int	main(void)
 	int		ofd;
 	char	*gnl;
 
-	err_putstr("Running test with BUFFER_SIZE = ");
-	err_putnbr(BUFFER_SIZE);
-	err_putstr("... ");
-	fd = open("tests/large_buffer/input.txt", O_RDONLY);
+	fd = open("tests/buffer/input.txt", O_RDONLY);
 	ofd = open("gnl.out", O_WRONLY | O_CREAT, 0644);
 	gnl = get_next_line(fd);
 	if (gnl)
@@ -58,14 +54,7 @@ int	main(void)
 	free(gnl);
 	close(ofd);
 	close(fd);
-	if (gnl_is_diff("gnl.out", "tests/large_buffer/output_expected.txt"))
-		err_putstr("test failed.\n");
-	else
-	{
-		err_putstr("All tests passed.\n");
-		system("cat diff.out");
-		unlink("diff.out");
-	}
-	unlink("gnl.out");
+	if (gnl_is_diff("gnl.out", "tests/buffer/output_expected.txt"))
+		return (1);
 	return (0);
 }

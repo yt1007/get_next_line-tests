@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:49:52 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 11:38:04 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/17 13:44:18 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ for f in ${MANDO}; do
 	fi;
 done;
 if [[ ${M} -eq 0 ]]; then
-	echo -n "(mandatory files not found) ";
+	echo -ne "${RD}(mandatory files not found)${NC} ";
 	exit 1;
 fi;
 B=1;
@@ -43,7 +43,7 @@ fi;
 cc -Wall -Wextra -Werror -I. -I${WD} -o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
-	echo -n "(mandatory failed) ";
+	echo -n "${RD}(Failed to compile)${NC} ";
 	exit 1;
 fi;
 rm gnl;
@@ -51,7 +51,7 @@ cc -Wall -Wextra -Werror -I. -I${WD} -D BUFFER_SIZE=42 \
 	-o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
-	echo -n "(mandatory with buffer size failed) ";
+	echo -n "${RD}(Failed to compile with BUFFER_SIZE)${NC} ";
 	exit 1;
 fi;
 rm gnl;
@@ -62,7 +62,7 @@ if [[ ${B} == 1 ]]; then
 	cc -Wall -Wextra -Werror -I. -I${WD} -o gnl ${BONUS} ${TESTS};
 	./gnl;
 	if [[ $? -ne 0 ]]; then
-		echo -n "(bonus failed) ";
+		echo -n "${RD}(BONUS KO. Failed to compile)${NC} ";
 		exit 1;
 	fi;
 	rm gnl;
@@ -70,7 +70,7 @@ if [[ ${B} == 1 ]]; then
 		-o gnl ${BONUS} ${TESTS};
 	./gnl
 	if [[ $? -ne 0 ]]; then
-		echo -n "(bonus with buffer size failed) ";
+		echo -n "${RD}(BONUS KO. Failed to compile with BUFFER_SIZE)${NC} ";
 		exit 1;
 	fi;
 	rm gnl

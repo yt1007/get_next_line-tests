@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 11:41:24 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 12:04:25 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/17 13:50:09 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ for f in ${MANDO}; do
 	fi;
 done;
 if [[ ${M} -eq 0 ]]; then
-	echo -n "(mandatory files not found) ";
+	echo -ne "${RD}(mandatory files not found)${NC} ";
 	exit 1;
 fi;
 
@@ -36,7 +36,7 @@ if [[ $(grep -cv "OK\!$" ${OUTPUT}) -eq 0 ]]; then
 	rm ${OUTPUT};
 else
 	mv ${OUTPUT} ${WD};
-	echo -n "(norminette failed. Check norminette.out.) ";
+	echo -ne "${RD}(Check norminette.out.)${NC} ";
 	exit 1;
 fi;
 exit 0;
