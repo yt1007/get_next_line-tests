@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:21:18 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/17 20:09:32 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/18 07:45:04 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,8 @@ int	main(void)
 	char	*efn;
 
 	i = 0;
-	while (++i <= 3)
+	while (++i <= 9)
 	{
-		if (i >= 4 && i <= 5)
-			continue ;
-		err_putnbr(i);
-		err_putstr(" ");
 		fn = calloc(strlen("tests/bonus/input_") + 1 + strlen(".txt") + 1, 1);
 		strcat(fn, "tests/bonus/input_");
 		fn[strlen(fn)] = i + '0';
@@ -96,7 +92,15 @@ int	main(void)
 		free(fn);
 		free(efn);
 		if (diff)
+		{
+			err_putstr("\033[0;31m");
+			err_putnbr(i);
+			err_putstr("\033[0m ");
 			return (1);
+		}
+		err_putstr("\033[0;32m");
+		err_putnbr(i);
+		err_putstr("\033[0m ");
 	}
 	return (0);
 }

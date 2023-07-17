@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 20:11:13 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 07:28:50 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -170,6 +170,7 @@ for n in single multi; do
 		rm output_expected.txt;
 	done;
 done;
+
 ## BONUS
 # MULTIPLE FD
 echo -ne "${BL}Running tests with multiple file descriptors${NC}... ";

@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 12:38:54 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 20:13:02 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 07:31:40 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ for f in ${BONUS}; do
 	fi;
 done;
 if [[ ${B} -eq 0 ]]; then
-	echo -n "(bonus missing, skipped) ";
+	echo -ne "${RD}(BONUS MISSING)${NC} ";
 fi;
 
 ## If bonus files exists, try to compile & run the bonus files with
@@ -40,6 +40,7 @@ if [[ ${B} == 1 ]]; then
 		exit 1;
 	fi;
 	cd ${GNL_DIR};
+	rm gnl;
 fi;
 
 exit 0;
