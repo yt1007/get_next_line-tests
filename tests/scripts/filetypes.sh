@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 12:38:54 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 17:27:48 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 07:46:26 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ if [[ ${B} == 1 ]]; then
 	rm diff.out;
 	rm gnl.out;
 	cd ${GNL_DIR};
+	rm gnl;
 fi;
 
 exit 0;
