@@ -6,14 +6,12 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:49:52 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 13:42:18 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 08:57:11 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
-MANDO="get_next_line.c get_next_line_utils.c";
-BONUS=$(echo $MANDO | sed "s/\.c/_bonus&/");
 TESTS="${WD}/get_next_line-tests_utils.c ${WD}/tests/errors/test.c";
 
 ## Check for the mandatory and bonus files

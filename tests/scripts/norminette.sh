@@ -6,13 +6,12 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 11:41:24 by yetay             #+#    #+#              #
-#    Updated: 2023/07/17 13:50:09 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 08:57:29 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
-MANDO="get_next_line.c get_next_line_utils.c";
 OUTPUT=norminette.out;
 
 ## Check for the mandatory and bonus files

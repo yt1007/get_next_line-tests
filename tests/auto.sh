@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/18 08:12:54 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 08:56:45 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ export RD='\033[0;31m';
 export GR='\033[0;32m';
 export BL='\033[1;34m';
 export NC='\033[0m';
+
+## export the MANDATORY and BONUS FILE NAMES
+MANDO="get_next_line.c get_next_line_utils.c";
+BONUS=$(echo $MANDO | sed "s/\.c/_bonus&/");
 
 ## Norminette
 echo -e -n "${BL}Running norminette on *.h and *.c files${NC}... "
