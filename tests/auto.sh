@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/18 07:28:50 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/18 08:12:54 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -180,4 +180,13 @@ if [[ $? -eq 0 ]]; then
 else
 	echo -e "${RD}KO.${NC}";
 fi;
-
+# Single static variable
+cd ${GNL_DIR};
+echo -ne "${BL}Checking if bonus files for static variables${NC}... ";
+sc=$(grep -hw "static" *_bonus.[ch] | grep -v "^\/\*" | grep -cv "[()]");
+if [[ ${sc} -eq 1 ]]; then
+	echo -e "${GR}OK${NC}.";
+else
+	echo -e "${RD}KO.${NC}";
+	echo -e "Automatically detected static variable: ${RD}${sc}${NC}";
+fi;
