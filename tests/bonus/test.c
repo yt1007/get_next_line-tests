@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:21:18 by yetay             #+#    #+#             */
-/*   Updated: 2023/07/18 07:56:10 by yetay            ###   ########.fr       */
+/*   Updated: 2023/07/18 09:25:03 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	main(void)
 		else
 			write(ofd[i - 1], gnl, 0);
 		close(ofd[i - 1]);
-		close(fd[i - 1]);
 		efn = build_fn("tests/bonus/output_", i, ".txt");
 		diff = gnl_is_diff(i, efn, fn);
 		free(fn);
@@ -101,5 +100,8 @@ int	main(void)
 		err_putnbr(i);
 		err_putstr("\033[0m ");
 	}
+	i = 0;
+	while (++i <= 9)
+		close(fd[i - 1]);
 	return (0);
 }
