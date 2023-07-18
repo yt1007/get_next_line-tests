@@ -30,7 +30,7 @@ fi;
 ## buffer_size settings
 ## Exit with 1 if either compilation failed.
 if [[ ${B} == 1 ]]; then
-	cc -Wall -Wextra -Werror -I. -I${WD} \
+	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} \
 		-o gnl ${BONUS} ${TESTS};
 	cd ${WD} && ${GNL_DIR}/gnl;
 	if [[ $? -ne 0 ]]; then

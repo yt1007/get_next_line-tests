@@ -38,7 +38,7 @@ fi;
 
 ## Try to compile & run the mandatory files with buffer_size settings
 ## exit with 1 if either compilation failed.
-cc -Wall -Wextra -Werror -I. -I${WD} -o gnl \
+cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl \
 	${MANDO} ${TESTS};
 cd ${WD} && ${GNL_DIR}/gnl;
 if [[ $? -ne 0 ]]; then
@@ -55,7 +55,7 @@ rm gnl;
 ## buffer_size settings
 ## Exit with 1 if either compilation failed.
 if [[ ${B} == 1 ]]; then
-	cc -Wall -Wextra -Werror -I. -I${WD} \
+	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} \
 		-o gnl ${BONUS} ${TESTS};
 	cd ${WD} && ${GNL_DIR}/gnl;
 	if [[ $? -ne 0 ]]; then

@@ -38,14 +38,14 @@ fi;
 
 ## Try to compile & run the mandatory files without/with buffer_size settings
 ## exit with 1 if either compilation failed.
-cc -Wall -Wextra -Werror -I. -I${WD} -o gnl ${MANDO} ${TESTS};
+cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
 	echo -n "${RD}(Failed to compile)${NC} ";
 	exit 1;
 fi;
 rm gnl;
-cc -Wall -Wextra -Werror -I. -I${WD} -D BUFFER_SIZE=42 \
+cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -D BUFFER_SIZE=42 \
 	-o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
@@ -57,14 +57,14 @@ rm gnl;
 ## buffer_size settings
 ## Exit with 1 if either compilation failed.
 if [[ ${B} == 1 ]]; then
-	cc -Wall -Wextra -Werror -I. -I${WD} -o gnl ${BONUS} ${TESTS};
+	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${BONUS} ${TESTS};
 	./gnl;
 	if [[ $? -ne 0 ]]; then
 		echo -n "${RD}(BONUS KO. Failed to compile)${NC} ";
 		exit 1;
 	fi;
 	rm gnl;
-	cc -Wall -Wextra -Werror -I. -I${WD} -D BUFFER_SIZE=42 \
+	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -D BUFFER_SIZE=42 \
 		-o gnl ${BONUS} ${TESTS};
 	./gnl
 	if [[ $? -ne 0 ]]; then
