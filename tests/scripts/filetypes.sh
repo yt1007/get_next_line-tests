@@ -61,7 +61,7 @@ if [[ ${B} == 1 ]]; then
 	if [[ $? -ne 0 ]]; then
 		mv diff.out ${WD}/diff_$1_bonus.out;
 		mv gnl.out ${WD}/gnl_$1_bonus.out;
-		echo -n "${RD}(BONUS KO. Check diff_$1_bonus.out)${NC} ";
+		echo -ne "${RD}(BONUS KO. Check diff_$1_bonus.out)${NC} ";
 		exit 1;
 	fi;
 	rm diff.out;

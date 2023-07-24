@@ -41,7 +41,7 @@ fi;
 cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
-	echo -n "${RD}(Failed to compile)${NC} ";
+	echo -ne "${RD}(Failed to compile)${NC} ";
 	exit 1;
 fi;
 rm gnl;
@@ -49,7 +49,7 @@ cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -D BUFFER_SIZE=42 \
 	-o gnl ${MANDO} ${TESTS};
 ./gnl;
 if [[ $? -ne 0 ]]; then
-	echo -n "${RD}(Failed to compile with BUFFER_SIZE)${NC} ";
+	echo -ne "${RD}(Failed to compile with BUFFER_SIZE)${NC} ";
 	exit 1;
 fi;
 rm gnl;
@@ -60,7 +60,7 @@ if [[ ${B} == 1 ]]; then
 	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${BONUS} ${TESTS};
 	./gnl;
 	if [[ $? -ne 0 ]]; then
-		echo -n "${RD}(BONUS KO. Failed to compile)${NC} ";
+		echo -ne "${RD}(BONUS KO. Failed to compile)${NC} ";
 		exit 1;
 	fi;
 	rm gnl;
@@ -68,7 +68,7 @@ if [[ ${B} == 1 ]]; then
 		-o gnl ${BONUS} ${TESTS};
 	./gnl
 	if [[ $? -ne 0 ]]; then
-		echo -n "${RD}(BONUS KO. Failed to compile with BUFFER_SIZE)${NC} ";
+		echo -ne "${RD}(BONUS KO. Failed to compile with BUFFER_SIZE)${NC} ";
 		exit 1;
 	fi;
 	rm gnl

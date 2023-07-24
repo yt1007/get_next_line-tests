@@ -34,7 +34,7 @@ if [[ ${B} == 1 ]]; then
 		-o gnl ${BONUS} ${TESTS};
 	cd ${WD} && ${GNL_DIR}/gnl;
 	if [[ $? -ne 0 ]]; then
-		echo -n "${RD}(BONUS KO. Check diff.out files)${NC} ";
+		echo -ne "${RD}(BONUS KO. Check diff.out files)${NC} ";
 		exit 1;
 	fi;
 	cd ${GNL_DIR};

@@ -31,7 +31,7 @@ export MANDO="get_next_line.c get_next_line_utils.c";
 export BONUS=$(echo $MANDO | sed "s/\.c/_bonus&/g");
 
 ## Norminette
-echo -e -n "${BL}Running norminette on *.h and *.c files${NC}... "
+echo -ne "${BL}Running norminette on *.h and *.c files${NC}... "
 bash tests/scripts/norminette.sh;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -40,7 +40,7 @@ else
 fi;
 
 ## Compilation
-echo -e -n "${BL}Running compilation tests${NC}... "
+echo -ne "${BL}Running compilation tests${NC}... "
 bash tests/scripts/compilation.sh;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -49,7 +49,7 @@ else
 fi;
 
 ## Error management
-echo -e -n "${BL}Running error management tests${NC}... ";
+echo -ne "${BL}Running error management tests${NC}... ";
 bash tests/scripts/error_management.sh;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -95,7 +95,7 @@ fi;
 rm input.txt;
 rm output_expected.txt;
 # LARGE BUFFER SIZE
-echo -e -n "${BL}Running tests with BUFFER_SIZE = 4201${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = 4201${NC}... ";
 bash tests/scripts/buffer.sh 4201;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -105,7 +105,7 @@ else
 fi;
 rm gnl.out;
 # SMALL BUFFER SIZE
-echo -e -n "${BL}Running tests with BUFFER_SIZE = 7${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = 7${NC}... ";
 bash tests/scripts/buffer.sh 7;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -114,7 +114,7 @@ else
 	echo -e "${RD}KO.${NC}";
 fi;
 rm gnl.out;
-echo -e -n "${BL}Running tests with BUFFER_SIZE = 1${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = 1${NC}... ";
 bash tests/scripts/buffer.sh 1;
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -125,7 +125,7 @@ fi;
 rm gnl.out;
 # BUFFER SIZE = LENGTH OF LINE
 LINE=$(head -n 1 tests/buffer/input.txt | wc -c | sed "s/^ *//");
-echo -e -n "${BL}Running tests with BUFFER_SIZE = ${LINE} (length of input line)${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = ${LINE} (length of input line)${NC}... ";
 bash tests/scripts/buffer.sh ${LINE};
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -135,7 +135,7 @@ else
 fi;
 rm gnl.out;
 # BUFFER SIZE = LENGTH OF LINE +/- 1
-echo -e -n "${BL}Running tests with BUFFER_SIZE = $[${LINE} - 1] (length of input line - 1)${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = $[${LINE} - 1] (length of input line - 1)${NC}... ";
 bash tests/scripts/buffer.sh $[${LINE} - 1];
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";
@@ -144,7 +144,7 @@ else
 	echo -e "${RD}KO.${NC}";
 fi;
 rm gnl.out;
-echo -e -n "${BL}Running tests with BUFFER_SIZE = $[${LINE} + 1] (length of input line + 1)${NC}... ";
+echo -ne "${BL}Running tests with BUFFER_SIZE = $[${LINE} + 1] (length of input line + 1)${NC}... ";
 bash tests/scripts/buffer.sh $[${LINE} + 1];
 if [[ $? -eq 0 ]]; then
 	echo -e "${GR}OK${NC}.";

@@ -63,7 +63,7 @@ if [[ ${B} == 1 ]]; then
 	cd ${WD} && ${GNL_DIR}/gnl;
 	if [[ $? -ne 0 ]]; then
 		mv diff.out ${WD}/diff_bs_$1_bonus.out;
-		echo -n "${RD}(BONUS KO. Check diff_bs_$1_bonus.out)${NC} ";
+		echo -ne "${RD}(BONUS KO. Check diff_bs_$1_bonus.out)${NC} ";
 		exit 1;
 	fi;
 	rm diff.out;
