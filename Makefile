@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 11:07:26 by yetay             #+#    #+#              #
-#    Updated: 2023/07/24 16:35:21 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/24 17:19:33 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ RM = rm -rf
 
 
 NAME = gnl
-OUTFILES = norminette.out
+OUTFILES = norminette.out \
+		   input.txt output_expected.txt \
+		   buffer_*_diff.out \
+		   diff_*.out gnl_*.out \
 
 .PHONY: mandatory bonus all \
 	    clean fclean re
