@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/18 09:23:10 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/24 10:44:28 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ fi;
 
 ## Testing
 # FILES WITH NEW LINE
-echo -ne "${BL}Running tests with file containing newline... ";
+echo -ne "${BL}Running tests with file containing newline${NC}... ";
 ln tests/files/input_fwnl.txt input.txt;
 ln tests/files/output_fwnl.txt output_expected.txt;
 bash tests/scripts/filetypes.sh fwnl;
@@ -71,7 +71,7 @@ fi;
 rm input.txt;
 rm output_expected.txt;
 # FILES WIHTHOUT NEW LINE
-echo -ne "${BL}Running tests with file without a newline... ";
+echo -ne "${BL}Running tests with file without a newline${NC}... ";
 ln tests/files/input_fnnl.txt input.txt;
 ln tests/files/output_fnnl.txt output_expected.txt;
 bash tests/scripts/filetypes.sh fnnl;
@@ -83,7 +83,7 @@ fi;
 rm input.txt;
 rm output_expected.txt;
 # EMPTY FILE
-echo -ne "${BL}Running tests with empty file... ";
+echo -ne "${BL}Running tests with empty file${NC}... ";
 ln tests/files/input_empty.txt input.txt;
 ln tests/files/output_empty.txt output_expected.txt;
 bash tests/scripts/filetypes.sh empty;
@@ -156,12 +156,11 @@ rm gnl.out;
 # SINGLE/MULTI LONG/SHORT/EMPTY LINE(S)
 for n in single multi; do
 	for x in long short empty; do
-		echo -ne "${BL}Running test with a file containing ${n} ${x} ";
-		if [[ ${n} == "single" ]]; then
-			echo -ne "line... ";
-		else
-			echo -ne "lines... ";
+		echo -ne "${BL}Running test with a file containing ${n} ${x} line";
+		if [[ ${n} == "multi" ]]; then
+			echo -ne "s";
 		fi;
+		echo -ne "${NC}... ";
 		ln tests/sm_lse/input_${n}_${x}.txt input.txt;
 		ln tests/sm_lse/output_${n}_${x}.txt output_expected.txt;
 		bash tests/scripts/filetypes.sh ${n}_${x};
