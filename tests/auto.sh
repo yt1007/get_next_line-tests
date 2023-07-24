@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/24 16:56:49 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/24 17:17:32 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,10 @@ else
 fi;
 rm input.txt;
 rm output_expected.txt;
+echo -e "${BL}Running test where get_next_line is supposed to read from stdin${NC}... ";
+echo -e "(There is no automatic detection for this test. You should compare that the output is the same as your input up until you press Enter)";
+bash tests/scripts/stdin.sh;
+
 # LARGE BUFFER SIZE
 echo -ne "${BL}Running tests with BUFFER_SIZE = 4201${NC}... ";
 bash tests/scripts/buffer.sh 4201;
