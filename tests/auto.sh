@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:24:44 by yetay             #+#    #+#              #
-#    Updated: 2023/07/24 10:44:28 by yetay            ###   ########.fr        #
+#    Updated: 2023/07/24 16:56:49 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,20 @@ export NC='\033[0m';
 ## export the MANDATORY and BONUS FILE NAMES
 export MANDO="get_next_line.c get_next_line_utils.c";
 export BONUS=$(echo $MANDO | sed "s/\.c/_bonus&/g");
+
+## export the M and B variable (M = run mandatory, B = run bonus)
+if [[ "$1" == "m" ]]; then
+	M=1;
+	B=0;
+elif [[ "$1" == "b" ]]; then
+	M=0;
+	B=1;
+else
+	M=1;
+	B=1;
+fi;
+export M;
+export B;
 
 ## Norminette
 echo -ne "${BL}Running norminette on *.h and *.c files${NC}... "
@@ -175,21 +189,23 @@ for n in single multi; do
 done;
 
 ## BONUS
-# MULTIPLE FD
-echo -ne "${BL}Running tests with multiple file descriptors${NC}... ";
-bash tests/scripts/bonus.sh;
-if [[ $? -eq 0 ]]; then
-	echo -e "${GR}OK${NC}.";
-else
-	echo -e "${RD}KO.${NC}";
-fi;
-# Single static variable
-cd ${GNL_DIR};
-echo -ne "${BL}Checking if bonus files for static variables${NC}... ";
-sc=$(grep -hw "static" *_bonus.[ch] | grep -v "^\/\*" | grep -cv "[()]");
-if [[ ${sc} -eq 1 ]]; then
-	echo -e "${GR}OK${NC}.";
-else
-	echo -e "${RD}KO.${NC}";
-	echo -e "Automatically detected static variable: ${RD}${sc}${NC}";
+if [[ ${B} -eq 1 ]]; then
+	# MULTIPLE FD
+	echo -ne "${BL}Running tests with multiple file descriptors${NC}... ";
+	bash tests/scripts/bonus.sh;
+	if [[ $? -eq 0 ]]; then
+		echo -e "${GR}OK${NC}.";
+	else
+		echo -e "${RD}KO.${NC}";
+	fi;
+	# Single static variable
+	cd ${GNL_DIR};
+	echo -ne "${BL}Checking if bonus files for static variables${NC}... ";
+	sc=$(grep -hw "static" *_bonus.[ch] | grep -v "^\/\*" | grep -cv "[()]");
+	if [[ ${sc} -eq 1 ]]; then
+		echo -e "${GR}OK${NC}.";
+	else
+		echo -e "${RD}KO.${NC}";
+		echo -e "Automatically detected static variable: ${RD}${sc}${NC}";
+	fi;
 fi;
