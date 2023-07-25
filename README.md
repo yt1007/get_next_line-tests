@@ -12,4 +12,5 @@ In the repository, type:
 
 ## Notes
 1. This test checks for norminette error for all *.h and *.c files. If you have other non-get_next_line files with a .h or .c suffix, these files will also be checked.
-2. One of the tests checks your get_next_line submission by calling get_next_line on the stdin (file description 0), the test does not include automatic checking for this function, type random input and press Enter, then compare that the output printed on screen is identical to what you typed.
+2. This test does not check for leaks.
+3. One of the tests checks your get_next_line submission by calling get_next_line on the stdin (file description 0), the test does not include automatic checking for this function, type random input and press Enter, then compare that the output printed on screen is identical to what you typed.
