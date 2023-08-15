@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:54:08 by yetay             #+#    #+#             */
-/*   Updated: 2023/08/16 07:53:06 by yetay            ###   ########.fr       */
+/*   Updated: 2023/08/16 07:56:25 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	errors = 0;
-	if (run_fd_test(-1))
+	if (atoi(argv[1]) > -1 && run_fd_test(-1))
 		errors++;
-	if (run_fd_test(42))
+	if (atoi(argv[1]) > 42 && run_fd_test(42))
 		errors++;
 	if (atoi(argv[1]) > 1024 && run_fd_test(1024))
 		errors++;
