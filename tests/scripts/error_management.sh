@@ -6,7 +6,7 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 10:49:52 by yetay             #+#    #+#              #
-#    Updated: 2023/07/24 16:52:33 by yetay            ###   ########.fr        #
+#    Updated: 2023/08/16 07:51:31 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ fi;
 ## exit with 1 if either compilation failed.
 if [[ ${M} -eq 1 ]]; then
 	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${MANDO} ${TESTS};
-	./gnl;
+	./gnl $(ulimit -n);
 	if [[ $? -ne 0 ]]; then
 		echo -ne "${RD}(Failed to compile)${NC} ";
 		exit 1;
@@ -51,7 +51,7 @@ if [[ ${M} -eq 1 ]]; then
 	rm gnl;
 	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -D BUFFER_SIZE=42 \
 		-o gnl ${MANDO} ${TESTS};
-	./gnl;
+	./gnl $(ulimit -n);
 	if [[ $? -ne 0 ]]; then
 		echo -ne "${RD}(Failed to compile with BUFFER_SIZE)${NC} ";
 		exit 1;
@@ -63,7 +63,7 @@ fi;
 ## Exit with 1 if either compilation failed.
 if [[ ${B} -eq 1 ]]; then
 	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -o gnl ${BONUS} ${TESTS};
-	./gnl;
+	./gnl $(ulimit -n);
 	if [[ $? -ne 0 ]]; then
 		echo -ne "${RD}(BONUS KO. Failed to compile)${NC} ";
 		exit 1;
@@ -71,7 +71,7 @@ if [[ ${B} -eq 1 ]]; then
 	rm gnl;
 	cc -Wall -Wextra -Werror -I${GNL_DIR} -I${WD} -D BUFFER_SIZE=42 \
 		-o gnl ${BONUS} ${TESTS};
-	./gnl
+	./gnl $(ulimit -n)
 	if [[ $? -ne 0 ]]; then
 		echo -ne "${RD}(BONUS KO. Failed to compile with BUFFER_SIZE)${NC} ";
 		exit 1;
